@@ -29,7 +29,7 @@ const createDosen = async (req, res) => {
       throw new BadRequestError("Username sudah digunakan");
     }
     const dosen = await Dosen.create(data);
-    console.log(dosen);
+
     res.status(201).json(dosen);
   }
 };
@@ -88,7 +88,6 @@ const changePassword = async (req, res) => {
         throw new BadRequestError("Gagal mengubah kata sandi Dosen");
       }
 
-      console.log(updatedDosen);
       res
         .status(200)
         .json({ message: "Kata sandi berhasil diubah", updatedDosen });

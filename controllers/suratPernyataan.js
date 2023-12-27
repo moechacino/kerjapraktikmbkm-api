@@ -23,7 +23,7 @@ const createOneSuratPernyataan = async (req, res) => {
   try {
     //uploading file
     const response = await s3.send(params);
-    console.log(response);
+
     msg = "File Uploaded";
   } catch {
     throw new BadRequestError("Error Uploading File");
@@ -34,7 +34,7 @@ const createOneSuratPernyataan = async (req, res) => {
   };
   //get url pdf
   const command = new GetObjectCommand(objectParams);
-  console.log(command);
+
   const url = await getSignedUrl(s3, command);
   const suratPernyataan = await SuratPernyataan.create({
     nama: nama,
@@ -43,7 +43,7 @@ const createOneSuratPernyataan = async (req, res) => {
     file: url,
     createdBy: username,
   });
-  console.log(suratPernyataan);
+
   res.status(201).json({ suratPernyataan, msg: msg });
 };
 
@@ -57,7 +57,7 @@ const getAllSuratPernyataan = async (req, res) => {
       const suratPernyataan = await SuratPernyataan.find({
         createdBy: username,
       });
-      console.log(suratPernyataan);
+
       res.status(200).json(suratPernyataan);
     }
   } else if (status === "Dosen") {

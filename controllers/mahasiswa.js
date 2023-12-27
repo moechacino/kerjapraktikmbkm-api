@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 const createMahasiswa = async (req, res) => {
   let data = req.body;
   if (!data.tanggalLahir) {
-    console.log(data);
   }
   if (data.password.length < 8) {
     throw new BadRequestError("password minimal 8 karakter");
@@ -23,7 +22,7 @@ const createMahasiswa = async (req, res) => {
     throw new BadRequestError("Email sudah digunakan");
   }
   const mahasiswa = await Mahasiswa.create(data);
-  console.log("data: " + mahasiswa);
+
   res.status(201).json(mahasiswa);
 };
 
@@ -81,7 +80,6 @@ const changePassword = async (req, res) => {
         throw new BadRequestError("Gagal mengubah kata sandi Mahasiswa");
       }
 
-      console.log(updatedMahasiswa);
       res
         .status(200)
         .json({ message: "Kata sandi berhasil diubah", updatedMahasiswa });

@@ -28,7 +28,7 @@ const createOnePengajuanKP = async (req, res) => {
     try {
       //uploading file
       const response = await s3.send(params);
-      console.log(response);
+
       msg = "File Uploaded";
     } catch {
       throw new BadRequestError("Error Uploading File");
@@ -39,7 +39,7 @@ const createOnePengajuanKP = async (req, res) => {
     };
     //get url pdf
     const command = new GetObjectCommand(objectParams);
-    console.log(command);
+
     const url = await getSignedUrl(s3, command);
     //create database pengajuan kp
 
@@ -52,7 +52,7 @@ const createOnePengajuanKP = async (req, res) => {
       createdBy: req.user.username,
       prodi: req.user.prodi,
     });
-    console.log(pengajuan);
+
     res.status(201).json({ pengajuan, msg: msg });
   }
 };
@@ -62,11 +62,10 @@ const getAllPengajuanKP = async (req, res) => {
     const pengajuan = await Pengajuan.find({
       createdBy: req.user.username,
     });
-    console.log(pengajuan);
+
     res.status(201).json(pengajuan);
   } else if (req.user.status === "Dosen") {
     const pengajuan = await Pengajuan.find({ prodi: req.user.prodi });
-    console.log(pengajuan);
 
     res.status(201).json(pengajuan);
   } else {
@@ -132,7 +131,7 @@ const deletePengajuanKP = async (req, res) => {
     if (!pengajuan) {
       throw new BadRequestError("Pengajuan tidak ditemukan");
     }
-    console.log(pengajuan);
+
     res.status(201).json(pengajuan);
   }
 };

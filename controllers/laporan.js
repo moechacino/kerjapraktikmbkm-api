@@ -24,7 +24,7 @@ const createOneLaporan = async (req, res) => {
     try {
       //uploading file
       const response = await s3.send(params);
-      console.log(response);
+
       msg = "File Uploaded";
     } catch {
       throw new BadRequestError("Error Uploading File");
@@ -35,7 +35,7 @@ const createOneLaporan = async (req, res) => {
     };
     //get url pdf
     const command = new GetObjectCommand(objectParams);
-    console.log(command);
+
     const url = await getSignedUrl(s3, command);
 
     const laporan = await Laporan.create({
@@ -58,13 +58,13 @@ const getAllLaporan = async (req, res) => {
       const laporan = await Laporan.find({
         createdBy: username,
       });
-      console.log(laporan);
+
       res.json(laporan);
     } else if (status === "Dosen") {
       const laporan = await Laporan.find({
         prodi: prodi,
       });
-      console.log(laporan);
+
       res.json(laporan);
     } else {
       throw new BadRequestError("status is needed");
@@ -96,7 +96,6 @@ const deleteLaporan = async (req, res) => {
     throw new BadRequestError("Laporan tidak ditemukan");
   }
 
-  console.log(laporan);
   res
     .status(200)
     .json({ message: "Laporan berhasil dihapus", deletedLaporan: laporan });
