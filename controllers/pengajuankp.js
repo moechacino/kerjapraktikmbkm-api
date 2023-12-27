@@ -27,7 +27,7 @@ const createOnePengajuanKP = async (req, res) => {
     });
     try {
       //uploading file
-      const response = await s3.send(params);
+      await s3.send(params);
 
       msg = "File Uploaded";
     } catch {
@@ -42,7 +42,6 @@ const createOnePengajuanKP = async (req, res) => {
 
     const url = await getSignedUrl(s3, command);
     //create database pengajuan kp
-
     const pengajuan = await Pengajuan.create({
       anggotaKP: data.anggotaKP,
       tempatKP: data.tempatKP,

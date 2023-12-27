@@ -23,7 +23,7 @@ const createOneLaporan = async (req, res) => {
     });
     try {
       //uploading file
-      const response = await s3.send(params);
+      await s3.send(params);
 
       msg = "File Uploaded";
     } catch {

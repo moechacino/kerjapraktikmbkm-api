@@ -7,17 +7,3 @@ const connectDB = (url) => {
 };
 
 module.exports = { connectDB };
-/*
-mongoose.connection.db.listCollections().toArray((err, collections) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-
-    collections.forEach((collection) => {
-      if (collection.name === "NIP") {
-        
-      }
-    });
-  });
-*/
