@@ -6,13 +6,13 @@ const mongoose = require("mongoose");
 
 //registrasi
 const createDosen = async (req, res) => {
-  if (data.password.length < 8) {
-    throw new BadRequestError("password minimal 8 karakter");
-  }
   const nipCollection = mongoose.connection.db.collection("nips");
   const data = req.body;
   if (Object.keys(data).length === 0) {
     throw new BadRequestError("Data is empty");
+  }
+  if (data.password.length < 8) {
+    throw new BadRequestError("password minimal 8 karakter");
   }
   const existingNIPs = await nipCollection.find({ nip: data.nip }).toArray();
 
