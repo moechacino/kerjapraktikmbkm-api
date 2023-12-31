@@ -60,7 +60,18 @@ const login = async (req, res) => {
       }
     );
 
-    res.status(200).json({ msg: "login success", token });
+    res.status(200).json({
+      msg: "login success",
+      data: {
+        id: _id,
+        username,
+        nama: dosen.nama,
+        nip: dosen.nip,
+        prodi: dosen.prodi,
+        status: dosen.status,
+      },
+      token,
+    });
   } else {
     throw new BadRequestError("wrong username and password");
   }

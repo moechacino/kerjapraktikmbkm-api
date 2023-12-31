@@ -52,7 +52,18 @@ const login = async (req, res) => {
       }
     );
 
-    res.status(200).json({ msg: "login success", token });
+    res.status(200).json({
+      msg: "login success",
+      data: {
+        id: _id,
+        username,
+        nama: mahasiswa.nama,
+        nrp: mahasiswa.nrp,
+        prodi: mahasiswa.prodi,
+        status: mahasiswa.status,
+      },
+      token,
+    });
   } else {
     throw new BadRequestError("wrong username and password");
   }
