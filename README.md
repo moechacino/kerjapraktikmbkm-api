@@ -172,7 +172,7 @@ const existingNIPs = await nipCollection.find({ nip: data.nip }).toArray();
   - `DELETE /mahasiswa/suratpernyataan`
 
 
-### Features
+## Features
 - [ ] Mahasiswa can do registration and login
 - [ ] Dosen can do registration if the NIP matches with one of NIP in NIPs Database, also dosen can Login
 - [ ] Changing the password can be done by Mahasiswa and Dosen
