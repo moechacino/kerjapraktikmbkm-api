@@ -150,12 +150,12 @@ const createSuratPengantar = async (req, res) => {
     let msg = "";
     const params = new PutObjectCommand({
       Bucket: BUCKET_NAME,
-      Key: `${prodi}/Surat Pengantar/${filename}`,
+      Key: `${prodi}/Surat Pengantar/${req.file.originalname}`,
       Body: req.file.buffer,
     });
     const objectParams = {
       Bucket: BUCKET_NAME,
-      Key: `${prodi}/Surat Pengantar/${filename}`,
+      Key: `${prodi}/Surat Pengantar/${req.file.originalname}`,
     };
 
     try {
