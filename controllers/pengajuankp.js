@@ -137,21 +137,25 @@ const deletePengajuanKP = async (req, res) => {
 
 const createSuratPengantar = async (req, res) => {
   const { username, status, prodi } = req.user;
+  const { filename } = req.body;
   if (status !== "Dosen") {
     throw new BadRequestError("Tidak memiliki akses");
   } else {
     if (!req.file) {
       throw new BadRequestError("File Missing");
     }
+    if (!filename) {
+      throw new BadRequestError("Please insert filename");
+    }
     let msg = "";
     const params = new PutObjectCommand({
       Bucket: BUCKET_NAME,
-      Key: `${prodi}/Surat Pengantar/${req.file.originalname}`,
+      Key: `${prodi}/Surat Pengantar/${filename}`,
       Body: req.file.buffer,
     });
     const objectParams = {
       Bucket: BUCKET_NAME,
-      Key: `${prodi}/Surat Pengantar/${req.file.originalname}`,
+      Key: `${prodi}/Surat Pengantar/${filename}`,
     };
 
     try {
@@ -165,6 +169,7 @@ const createSuratPengantar = async (req, res) => {
     const command = new GetObjectCommand(objectParams);
     const url = await getSignedUrl(s3, command);
     const suratPengantar = await SuratPengantar.create({
+      filename: filename,
       prodi: prodi,
       file: url,
       createdBy: username,
