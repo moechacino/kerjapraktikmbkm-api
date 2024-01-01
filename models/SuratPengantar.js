@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const SuratPengantarSchema = new mongoose.Schema({
+  filename: {
+    type: String,
+    required: [true, "Sertakan nama file"],
+  },
   prodi: {
     type: String,
     required: [true, "Sertakan Program Studi"],
