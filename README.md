@@ -1,7 +1,7 @@
 # Documentation
 
 ## Overview
-All requests are made to endpoints beginning https://odd-gray-meerkat-boot.cyclic.app/api/v1/mbkm/mahasiswa for mahasiswa features and https://odd-gray-meerkat-boot.cyclic.app/api/v1/mbkm/dosen for dosen features.
+All requests are made to endpoints beginning ~~~https://odd-gray-meerkat-boot.cyclic.app/api/v1/mbkm/mahasiswa~~  https://kerjapraktikmbkm-api-92c8d2fa6242.herokuapp.com/api/v1/mbkm/mahasiswa for mahasiswa features and ~~https://odd-gray-meerkat-boot.cyclic.app/api/v1/mbkm/dosen~~~ https://kerjapraktikmbkm-api-92c8d2fa6242.herokuapp.com/api/v1/mbkm/mahasiswa for dosen features.
 All requests must be secure, i.e. https, not http.
 
 ## [CLick here for Postman Documentation](https://documenter.getpostman.com/view/24530478/2s9Ykt6ewi)
